@@ -8,7 +8,7 @@ public class Loan {
     public static final BigDecimal MIN_LOAN_PERIOD = BigDecimal.valueOf(12);
     public static final BigDecimal MAX_LOAN_PERIOD = BigDecimal.valueOf(60);
 
-    public static final BigDecimal LOAN_RATE = BigDecimal.valueOf(10);
+    public static final BigDecimal LOAN_RATE = BigDecimal.valueOf(18.7);
 
     private BigDecimal loanSum;
     private BigDecimal loanPeriod;
