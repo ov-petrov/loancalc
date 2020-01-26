@@ -1,6 +1,10 @@
 {
   "name": "no-name",
   "license": "UNLICENSED",
+  "engines": {
+    "node": "12.14.1",
+    "npm": "6.13.4"
+  },
   "dependencies": {
     "@polymer/polymer": "3.2.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
