@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface LoanService {
 
-    List<Payment> calculateLoan(Loan loan);
+    List<Payment> calculateLoanPayments(Loan loan);
 }

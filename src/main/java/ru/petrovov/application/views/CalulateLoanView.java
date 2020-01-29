@@ -65,7 +65,7 @@ public class CalulateLoanView extends Div {
         calculateLoan.addClickListener(e -> {
             Loan loan = new Loan();
             binder.writeBeanIfValid(loan);
-            List<Payment> payments = loanService.calculateLoan(loan);
+            List<Payment> payments = loanService.calculateLoanPayments(loan);
             paymentsGrid.setItems(payments);
         });
 
