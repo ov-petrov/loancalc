@@ -1,7 +1,12 @@
 package ru.petrovov.application.backend.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 
+@Entity
 public class Loan {
     public static final BigDecimal MIN_LOAN_SUM = BigDecimal.valueOf(100_000);
     public static final BigDecimal MAX_LOAN_SUM = BigDecimal.valueOf(5_000_000);
@@ -10,6 +15,9 @@ public class Loan {
 
     public static final BigDecimal LOAN_RATE = BigDecimal.valueOf(18.7);
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
     private BigDecimal loanSum;
     private BigDecimal loanPeriod;
     private BigDecimal loanRate;

@@ -23,6 +23,7 @@ import ru.petrovov.application.MainView;
 import ru.petrovov.application.backend.LoanService;
 import ru.petrovov.application.backend.model.Loan;
 import ru.petrovov.application.backend.model.Payment;
+import ru.petrovov.application.utils.HibernateUtil;
 
 import javax.inject.Inject;
 import java.time.format.DateTimeFormatter;
@@ -39,13 +40,19 @@ public class CalulateLoanView extends Div {
     @Inject
     LoanService loanService;
 
+    @Inject
+    HibernateUtil hibernateUtil;
+
     private BigDecimalField loanSum = new BigDecimalField();
     private BigDecimalField loanPeriod = new BigDecimalField();
     private BigDecimalField loanRate = new BigDecimalField();
 
     private Button cleanFields = new Button("Очистить");
     private Button calculateLoan = new Button("Расчитать");
+    private Button saveCalculations = new Button("Сохранить расчет");
     private Grid<Payment> paymentsGrid = new Grid<>();
+
+    private Loan loan;
 
     public CalulateLoanView() {
         setId("calulateloan-view");
@@ -63,11 +70,12 @@ public class CalulateLoanView extends Div {
         loanRate.setValue(LOAN_RATE);
         cleanFields.addClickListener(event -> clearFields());
         calculateLoan.addClickListener(e -> {
-            Loan loan = new Loan();
+            loan = new Loan();
             binder.writeBeanIfValid(loan);
             List<Payment> payments = loanService.calculateLoanPayments(loan);
             paymentsGrid.setItems(payments);
         });
+        saveCalculations.addClickListener(e -> hibernateUtil.saveEntity(loan));
 
         add(wrapper);
     }
@@ -135,8 +143,8 @@ public class CalulateLoanView extends Div {
         buttonLayout.setJustifyContentMode(FlexComponent.JustifyContentMode.END);
         cleanFields.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
         calculateLoan.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        buttonLayout.add(cleanFields);
-        buttonLayout.add(calculateLoan);
+        saveCalculations.addThemeVariants(ButtonVariant.LUMO_SUCCESS);
+        buttonLayout.add(cleanFields, calculateLoan, saveCalculations);
         wrapper.add(buttonLayout);
     }
 
