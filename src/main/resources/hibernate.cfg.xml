@@ -14,7 +14,7 @@
         <property name="connection.password">nowayman21+</property>
 
         <!-- DB schema will be updated if needed -->
-        <property name="hibernate.hbm2ddl.auto">create</property><!--create-drop -->
+        <property name="hibernate.hbm2ddl.auto">update</property><!--create-drop - for testing -->
 
         <mapping class="ru.petrovov.application.backend.model.Loan"/>
     </session-factory>
