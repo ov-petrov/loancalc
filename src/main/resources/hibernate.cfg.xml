@@ -17,5 +17,6 @@
         <property name="hibernate.hbm2ddl.auto">update</property><!--create-drop - for testing -->
 
         <mapping class="ru.petrovov.application.backend.model.Loan"/>
+        <mapping class="ru.petrovov.application.backend.model.Setting"/>
     </session-factory>
 </hibernate-configuration>

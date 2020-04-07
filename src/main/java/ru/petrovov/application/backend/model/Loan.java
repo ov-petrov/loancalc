@@ -8,12 +8,6 @@ import java.math.BigDecimal;
 
 @Entity
 public class Loan {
-    public static final BigDecimal MIN_LOAN_SUM = BigDecimal.valueOf(100_000);
-    public static final BigDecimal MAX_LOAN_SUM = BigDecimal.valueOf(5_000_000);
-    public static final BigDecimal MIN_LOAN_PERIOD = BigDecimal.valueOf(12);
-    public static final BigDecimal MAX_LOAN_PERIOD = BigDecimal.valueOf(60);
-
-    public static final BigDecimal LOAN_RATE = BigDecimal.valueOf(18.7);
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
