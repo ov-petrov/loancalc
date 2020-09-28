@@ -1,14 +1,38 @@
 package ru.petrovov.application.backend.model;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Embeddable
 public class Payment {
+    @NotNull
+    @Column(nullable = false)
     private Integer paymentIndex;
+
+    @Temporal(TemporalType.DATE)
+    @NotNull
+    @Column(nullable = false)
     private LocalDate paymentDate;
+
+    @NotNull
+    @Column(nullable = false)
     private BigDecimal bodyPayment;
+
+    @NotNull
+    @Column(nullable = false)
     private BigDecimal percentsPayment;
+
+    @NotNull
+    @Column(nullable = false)
     private BigDecimal loanReminder;
+
+    public Payment() {
+    }
 
     public Payment(Integer paymentIndex) {
         this.paymentIndex = paymentIndex;
@@ -52,10 +76,6 @@ public class Payment {
 
     public void setLoanReminder(BigDecimal loanReminder) {
         this.loanReminder = loanReminder;
-    }
-
-    public BigDecimal getWholePaymentSum() {
-        return bodyPayment.add(percentsPayment);
     }
 
     @Override

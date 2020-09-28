@@ -170,7 +170,7 @@ public class CalulateLoanView extends Div {
         paymentsGrid.addColumn(Payment::getBodyPayment).setHeader("Платеж по основному долгу").setSortable(false);
         paymentsGrid.addColumn(Payment::getPercentsPayment).setHeader("Платеж по процентам").setSortable(false);
         paymentsGrid.addColumn(Payment::getLoanReminder).setHeader("Остаток основного долга").setSortable(false);
-        paymentsGrid.addColumn(Payment::getWholePaymentSum).setHeader("Общая сумма платежа").setSortable(false);
+        paymentsGrid.addColumn(v -> v.getBodyPayment().add(v.getPercentsPayment())).setHeader("Общая сумма платежа").setSortable(false);
 
         wrapper.add(paymentsGrid);
     }

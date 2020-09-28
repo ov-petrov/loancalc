@@ -13,14 +13,13 @@ import java.util.Map;
 
 @ApplicationScoped
 public class SettingsServiceImpl implements SettingsService {
-    private Map<String, String> settings;
+    private final Map<String, String> settings = new HashMap<>();
 
     @Inject
     HibernateUtil hibernateUtil;
 
     @PostConstruct
     public void create() {
-        settings = new HashMap<>();
         EntityManager entityManager = hibernateUtil.getSessionFactory().createEntityManager();
         TypedQuery<Setting> query = entityManager.createQuery("select s from Setting s", Setting.class);
         query.getResultList().forEach(v -> settings.put(v.getName(), v.getValue()));
@@ -29,11 +28,10 @@ public class SettingsServiceImpl implements SettingsService {
 
     @Override
     public Map<String, String> getSettings() {
+        if (settings.isEmpty())
+            create();
+
         return settings;
     }
 
-    @Override
-    public void refreshSettings() {
-        create();
-    }
 }

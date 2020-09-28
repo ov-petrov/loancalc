@@ -1,13 +1,15 @@
 package ru.petrovov.application.backend.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+
+import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
-public class Loan {
+public class Loan implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -15,6 +17,11 @@ public class Loan {
     private BigDecimal loanSum;
     private BigDecimal loanPeriod;
     private BigDecimal loanRate;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column
+    @Generated(GenerationTime.ALWAYS)
+    private Date lastModified;
 
     public Loan() {
     }

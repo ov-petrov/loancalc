@@ -6,6 +6,4 @@ public interface SettingsService {
 
     Map<String, String> getSettings();
 
-    void refreshSettings();
-
 }
