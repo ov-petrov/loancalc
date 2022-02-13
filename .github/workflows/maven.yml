@@ -8,8 +8,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Import actions core
-      uses: actions/core@v1.2.6
     - name: Setup Node.js for use with actions
       uses: actions/setup-node@v2
     - uses: actions/checkout@v2
