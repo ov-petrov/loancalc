@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Allow unsecure commands
+      id: step_one
+      run: echo 'true' >> $ACTIONS_ALLOW_UNSECURE_COMMANDS
     - name: Setup Node.js for use with actions
       uses: actions/setup-node@v1.1.0
     - uses: actions/checkout@v2
