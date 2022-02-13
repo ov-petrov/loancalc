@@ -20,7 +20,7 @@ import java.util.Optional;
 
 @JsModule("./styles/shared-styles.js")
 @PWA(name = "Loan Calculator", shortName = "Loan Calculator")
-@Theme(value = Lumo.class, variant = Lumo.DARK)
+@Theme(themeClass = Lumo.class, variant = Lumo.DARK)
 public class MainView extends AppLayout {
 
     private final Tabs menu;
